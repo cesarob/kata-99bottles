@@ -9,10 +9,9 @@ ARG gid=1000
 #RUN useradd -m --uid $uid -g 99bottles 99bottles
 
 RUN gem install bundler
-# Install gems
-#COPY Gemfile Gemfile              
-#COPY Gemfile.lock Gemfile.lock
-#RUN bundle install
+COPY Gemfile Gemfile              
+COPY Gemfile.lock Gemfile.lock
+RUN bundle install
 
 
 WORKDIR /app
