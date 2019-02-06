@@ -1,5 +1,3 @@
-require 'pry'
-
 $normal_text = "%s bottles of beer on the wall, %s bottles of beer.
 Take one down and pass it around, %s bottles of beer on the wall."
 
@@ -31,8 +29,6 @@ RSpec.describe '99bottles' do
 
   it "generates poem" do
     poem = generate_poem(99)
-    #binding.pry
-    #byebug
     expect(poem).to eq(expected_poem)
   end
 end
