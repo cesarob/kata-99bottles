@@ -1,0 +1,15 @@
+version: '2'
+services:
+  99bottles:
+    build: .
+    volumes:
+      - .:/app
+      - ~/.gitconfig:/home/99bottles/.gitignore:ro
+      - ~/.ssh:/home/root/.ssh:ro
+      - ~/.bash_histories/99bottles:/home/99bottles/.bash_history
+    environment:
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - AWS_DEFAULT_REGION
+      - AWS_SESSION_TOKEN
+      - AWS_SECURITY_TOKEN
