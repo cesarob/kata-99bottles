@@ -11,15 +11,18 @@ $last_text = "No more bottles of beer on the wall, no more bottles of beer.
 Go to the store and buy some more, 99 bottles of beer on the wall.
 "
 
-# flog 10.6
-def generate_poem(num_bottles)
-  result = []
-  num_bottles.downto(3) do |num|
-    result.push($normal_text % [num, num, num - 1])
-  end
-  result.push($before_before_last_text)
-  result.push($before_last_text)
-  result.push($last_text)
+class Bottles
 
-  result.join("\n\n")
+  # flog 10.6
+  def song()
+    result = []
+    99.downto(3) do |num|
+      result.push($normal_text % [num, num, num - 1])
+    end
+    result.push($before_before_last_text)
+    result.push($before_last_text)
+    result.push($last_text)
+
+    result.join("\n\n")
+  end
 end
