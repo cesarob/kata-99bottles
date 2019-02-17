@@ -1,28 +1,36 @@
-$normal_text = "%s bottles of beer on the wall, %s bottles of beer.
-Take one down and pass it around, %s bottles of beer on the wall."
-
-$before_before_last_text = "2 bottles of beer on the wall, 2 bottles of beer.
-Take one down and pass it around, 1 bottle of beer on the wall."
-
-$before_last_text = "1 bottle of beer on the wall, 1 bottle of beer.
-Take one down and pass it around, no more bottles of beer on the wall."
-
-$last_text = "No more bottles of beer on the wall, no more bottles of beer.
-Go to the store and buy some more, 99 bottles of beer on the wall.
-"
-
 class Bottles
 
-  # flog 10.6
-  def song()
-    result = []
-    99.downto(3) do |num|
-      result.push($normal_text % [num, num, num - 1])
-    end
-    result.push($before_before_last_text)
-    result.push($before_last_text)
-    result.push($last_text)
-
-    result.join("\n\n")
+  def song
+    verses(99, 0)
   end
+
+  def verses(starting, ending)
+    starting.downto(ending).map {|i| verse(i)}.join("\n")
+  end
+
+  def verse(number)
+    case number
+    when 0
+      "No more bottles of beer on the wall, " +
+      "no more bottles of beer.\n" +
+      "Go to the store and buy some more, " +
+      "99 bottles of beer on the wall.\n"
+    when 1
+      "1 bottle of beer on the wall, " +
+      "1 bottle of beer.\n" +
+      "Take one down and pass it around, " +
+      "no more bottles of beer on the wall.\n"
+    when 2
+      "2 bottles of beer on the wall, " +
+      "2 bottles of beer.\n" +
+      "Take one down and pass it around, " +
+      "1 bottle of beer on the wall.\n"
+    else
+      "#{number} bottles of beer on the wall, " +
+      "#{number} bottles of beer.\n" +
+      "Take one down and pass it around, " +
+      "#{number-1} bottles of beer on the wall.\n"
+    end
+  end
+
 end
